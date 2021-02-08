@@ -7,12 +7,10 @@ module.exports = lista => {
     const delAsync = promisify(lista.del).bind(lista)
 
     return {
-        async adiciona (cheve, valor, dataExpiracao) {
-
-        },
-        async contemChave(chave, valor, dataExpiracao) {
+        async adiciona (chave, valor, dataExpiracao) {
             await setAsync(chave, valor);
             lista.expireat(chave, dataExpiracao)
+
         },
         async buscarValor(chave) {
             return getAsync(chave);
